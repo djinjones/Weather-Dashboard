@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<!-------------------------------------------------------------------------->
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <nav class="navbar d-flex" style="text-align: left; justify-content: center;">
+        <h1 style="margin-left: 20px;">Weather Dashboard</h1>
+        <hr style="width: 90vw">
+    </nav>
+    
+    <main class="row d-flex " style="min-height: fit-content;">
+    <aside class="col-4 d-flex flex-column">
+        <div class="row-12 d-flex flex-row align-items-center justify-content-center">
+        <h2 class="m-4">Search</h2>
+        <button class="btn btn-primary m-2" id="clearSearchModalBtn" style="width: fit-content; height: 40px;">Clear Searches</button>
+        </div>
+        <input class="mx-4 my-2" id="citySearch" type="text" placeholder="Search for a location...">
+        <button type="button" id="searchBtn" class="btn btn-primary mx-4 my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
+        <div class="mx-4 my-2 row flex-column-reverse" id="cityList"></div>
+   
+        <div style="display: none;" id="dialog-confirm" title="Clear recent searches?">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+          </div>
+           
+          
+           
+    </aside>
+    <figure id="weatherBoard" class="col-8 d-flex flex-column" >
+
+
+    </figure>
+    </main>
+    <footer style="display: flex; flex-direction: column; align-items: center;">
+        <hr style="width: 90vw">
+        <section id="con" class="contact" style="display: flex; flex-direction: column; align-items: center;">
+            <h4>Contact</h4>
+            <div style="display: flex; flex-direction: row; justify-content: center;">
+            <a style="text-decoration: none; padding: 10px" href="https://djinjones.github.com">Github</a>
+            <a style="text-decoration: none; padding: 10px" href="mailto:djones5205@gmail.com">Email</a>
+            <a style="text-decoration: none; padding: 10px" href="https://djinjones.github.io/week-2-challenge">Portfolio</a>
+          </div>
+        </section>
+        <p>Designed with ❤️ from Dan Jones</p>
+    </footer>
+<!-------------------------------------------------------------------------->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+<script src="./assets/script.js"></script>
+</body>
+</html>
