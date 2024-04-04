@@ -14,7 +14,7 @@
 </head>
 <body>
     <nav class="navbar d-flex" style="text-align: left; justify-content: center;">
-        <h1 style="margin-left: 20px;">Weather Dashboard</h1>
+        <h1 style="margin-left: 20px;">🌞Weather Dashboard🌦️</h1>
         <hr style="width: 90vw">
     </nav>
     
@@ -22,11 +22,11 @@
     <aside class="col-4 d-flex flex-column">
         <div class="row-12 d-flex flex-row align-items-center justify-content-center">
         <h2 class="m-4">Search</h2>
-        <button class="btn btn-primary m-2" id="clearSearchModalBtn" style="width: fit-content; height: 40px;">Clear Searches</button>
+        <button class="btn btn-primary m-2" id="clearSearchModalBtn" style="min-width: 150px; height: 40px;">Clear Searches</button>
         </div>
         <input class="mx-4 my-2" id="citySearch" type="text" placeholder="Search for a location...">
         <button type="button" id="searchBtn" class="btn btn-primary mx-4 my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
-        <div class="mx-4 my-2 row flex-column-reverse" id="cityList"></div>
+        <div class="mx-4 my-2 row flex-column-reverse align-items-center justify-content-center" id="cityList"></div>
    
         <div style="display: none;" id="dialog-confirm" title="Clear recent searches?">
             <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>

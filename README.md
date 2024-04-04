@@ -35,7 +35,8 @@ This is a simple website that loads weather data from an area that the user ente
 
 ## API
 
-N/A
+- [weatherapi.com](https://www.weatherapi.com)
+- weatherapi.com base url: http://api.weatherapi.com/v1/
 
 ## References
 
@@ -46,6 +47,7 @@ N/A
 
 - [Github banner generator](https://leviarista.github.io/github-profile-header-generator/)
 - [Github markdown-badges](https://ileriayo.github.io/markdown-badges/)
+- [weatherapi.com](https://www.weatherapi.com)
 
 ## Contributing
 

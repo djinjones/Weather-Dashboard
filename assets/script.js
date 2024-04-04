@@ -4,9 +4,11 @@ const clearSearchBtn = document.querySelector('#clearSearchBtn');
 const cityList = document.querySelector('#cityList');
 const weatherBoard = document.querySelector('#weatherBoard');
 const APIkey = '31491d9ec3484031a3a213935240304';
+const baseUrl = 'http://api.weatherapi.com/v1/'
 const clearSearchModalBtn = $('#clearSearchModalBtn');
 
 
+console.log(`getting weather data from weatherapi.com ${baseUrl}`)
 
 const getCity = function() {
     let city = searchBar.value;
@@ -17,7 +19,7 @@ const getCity = function() {
     cities.push(city);
     console.log(cities);
     if (cities.length > 10) {
-        shift(cities);
+        cities.shift();
     }
     cities = JSON.stringify(cities)
     localStorage.setItem('cities', cities);
@@ -26,14 +28,20 @@ const getCity = function() {
 const handleSearch = function() {
     getCity();
     searchBar.value = ''
+    fetchWeatherData();
     appendRecentCities();
 }
 
+document.addEventListener('click', function(event) {
+    recentCitySearch(event);
+})
+
 const appendRecentCities = function() {
-    console.log('appending recent cities...');
     while (cityList.firstChild) {
         cityList.removeChild(cityList.firstChild);
     }
+
+
     let cities = JSON.parse(localStorage.getItem('cities'));
     if (!cities || cities.length === 0) {
         console.log('No recent cities');
@@ -41,7 +49,8 @@ const appendRecentCities = function() {
     }
     cities.forEach(city => {
         const newButton = document.createElement('button');
-        newButton.classList.add("btn", "btn-secondary", "row-12", "mx-1", "my-1");
+        newButton.classList.add("btn", "btn-secondary", "row-12", "mx-1", "my-1", "recentCityBtn");
+        newButton.dataset.city = `${city}`
         newButton.textContent = city;
         cityList.append(newButton);
     });
@@ -78,12 +87,43 @@ $( function() {
   } );
 })
 
+const recentCitySearch = function(event) {
+    const cities = JSON.parse(localStorage.getItem('cities'));
+    const recentCity = event.target.dataset.city
+    console.log(recentCity);
+
+    appendRecentCities();
+}
+
 //--------------------------------------Fetch Weather Data--------------------------------------//
 
-const getWeatherData = function() {
-    const length = cities.length -1
-    const city = cities[length]
+// const getWeatherData = function() {
+//     let cities = JSON.parse(localStorage.getItem('cities'));
+//     const firstCity = cities.length -1;
+//     const city = cities[firstCity];
+//     console.log('Attempting to fetch weather data from weatherapi.com...')
+//     fetchWeatherData();
+
+//     fetch(`https://${baseUrl}current.json?key=${APIkey}&q=${city}`)
+//     .then(function (response) {
+//         response.json();
+//         console.log(response)
+//         return response;
+//     })
+//     .then(function(data){
+//         console.log(data);
+//     }) 
+// }
+
+async function fetchWeatherData() {
+    let cities = JSON.parse(localStorage.getItem('cities'));
+    const firstCity = cities.length -1;
+    const city = cities[firstCity];
+    const response = await fetch(`${baseUrl}current.json?key=${APIkey}&q=${city}`);
+    const data = await response.json();
+    console.log(data);
 }
+
 
 
 searchBtn.addEventListener('click', function() {
