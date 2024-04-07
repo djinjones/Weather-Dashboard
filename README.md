@@ -12,7 +12,8 @@
 
 ## Descrption
 
-This is a simple website that loads weather data from an area that the user enters and populates the page with various weather information
+This is a simple website that loads weather data from an area that the user enters and populates the page with various weather information including a five day forecast.
+It also saves up to 10 recently searched cities in the local storage.
 
 ## Table of Contents
 
@@ -27,7 +28,7 @@ This is a simple website that loads weather data from an area that the user ente
 
 ## Screenshots
 
-![Weather Dashoard](#)
+![Weather Dashoard](./assets/images/Screenshot%202024-04-06%20193454.png)
 
 ## Links
 
@@ -47,7 +48,7 @@ This is a simple website that loads weather data from an area that the user ente
 
 - [Github banner generator](https://leviarista.github.io/github-profile-header-generator/)
 - [Github markdown-badges](https://ileriayo.github.io/markdown-badges/)
-- [weatherapi.com](https://www.weatherapi.com)
+- [weatherapi.com](https://www.weatherapi.com/docs/)
 
 ## Contributing
 

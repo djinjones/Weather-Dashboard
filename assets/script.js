@@ -132,6 +132,7 @@ const appendWeatherData = function() {
     const windSpeed = document.createElement('p');
     //const localTime = document.createElement('p').classList.add("container custom-box local-time");
     const windDirection = document.createElement('p');
+    const fiveDayForecast = document.createElement('h2');
 
     hero.classList.add("container-md","custom-hero", "col-4");
     extraInfo.classList.add("container-md","extra-info-box", "col-2");
@@ -143,6 +144,7 @@ const appendWeatherData = function() {
     humidity.classList.add("container","custom-box","humidity");
     windSpeed.classList.add("container","custom-box","wind-speed");
     windDirection.classList.add("custom-box","wind-direction");
+    fiveDayForecast.classList.add("row", "fiveDayForecastH2");
     
     exactLocation.textContent = weatherData.location.name + ", " + weatherData.location.region
     temperature.textContent = Math.floor(weatherData.current.temp_f)+ "°F";
@@ -152,22 +154,20 @@ const appendWeatherData = function() {
     humidity.textContent = weatherData.current.humidity + "% humidity";
     windSpeed.textContent = weatherData.current.gust_mph + "mph gusts";
     windDirection.textContent = "Wind coming from: " + weatherData.current.wind_dir;
-
+    fiveDayForecast.textContent = "5 day forecast"
     
     
     windSpeed.append(windDirection);
     
     hero.append(exactLocation, weatherIcon, temperature, feelsLike, condition, humidity, windSpeed,);
     
-
+    extraInfo.append(fiveDayForecast);
     weatherBoard.append(hero, extraInfo)
-    appendFiveDay();
+    appendFiveDay(weatherData);
 }
 
-const appendFiveDay = function() {
-    
-    const forecasts = JSON.parse(localStorage.getItem('forecast'));
-    console.log(forecasts);
+const appendFiveDay = function(weatherData) {
+    const forecasts = weatherData.forecast.forecastday
     const extraInfo = document.querySelector('.extra-info-box')
     forecasts.forEach(forecast => {
     const newDay = document.createElement('div');
@@ -176,12 +176,12 @@ const appendFiveDay = function() {
     const newWindSpeed = document.createElement('p');
     const newHumidity = document.createElement('p');
     const newDate = document.createElement('p');
-    const tempCity = document.createElement('p');
     newTemp.textContent ='Low: ' + forecast.day.mintemp_f + '° | High: ' + forecast.day.maxtemp_f + '°';
     newImg.setAttribute('src', forecast.day.condition.icon);
     newWindSpeed.textContent = 'Gusts up to: ' + Math.floor(forecast.day.maxwind_mph/3);
     newHumidity.textContent = forecast.day.avghumidity + '% humidity'
     newDate.textContent = dayjs(forecast.date).format('dddd');
+    newDate.classList.add('newDate')
     newDay.classList.add('smallWeatherBox')
     newDay.append(newImg, newTemp, newWindSpeed, newHumidity, newDate);
     extraInfo.append(newDay)
@@ -196,12 +196,12 @@ async function fetchWeatherData() {
     let cities = JSON.parse(localStorage.getItem('cities'));
     const firstCity = cities.length -1;
     const city = cities[firstCity];
-    const current = 'current.json'
-    const APIurl = `${baseUrl}${current}?key=${APIkey}&q=${city}`
+    const current = 'forecast.json'
+    const APIurl = `${baseUrl}${current}?key=${APIkey}&q=${city}&days=5`
     const response = await fetch(APIurl);
     const data = await response.json();
     localStorage.setItem('currentWeather', JSON.stringify(data))
-    fetchFiveDay(city);
+//    fetchFiveDay(city);
     if (!data.error) {
     console.log(data);
     appendRecentCities();
@@ -219,15 +219,15 @@ async function fetchWeatherData() {
     
 }
 
-async function fetchFiveDay(city) {
-    const current = 'forecast.json';
-    const response = await fetch(`${baseUrl}${current}?key=${APIkey}&q=${city}&days=5`) ;
-    const data = await response.json();
-    const fiveDay = data.forecast.forecastday
-    localStorage.setItem('forecast', JSON.stringify(fiveDay));
-    console.log(data)
+// async function fetchFiveDay(city) {
+//     const current = 'forecast.json';
+//     const response = await fetch(`${baseUrl}${current}?key=${APIkey}&q=${city}&days=5`) ;
+//     const data = await response.json();
+//     const fiveDay = data.forecast.forecastday
+//     localStorage.setItem('forecast', JSON.stringify(fiveDay));
+//     console.log(data)
     
-}
+// }
 
 
 
