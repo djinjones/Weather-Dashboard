@@ -215,7 +215,10 @@ async function fetchWeatherData() {
             }
         }
         alert(`The city: "${city}" does not exist or could not be found. Please check your spelling and try again.`)
-    }
+    } else if (data.error.code == 2006){alert("The API key is invalid")
+    } else if (data.error.code == 2007){alert("The provided API key has exceeded calls per month quota")
+    } else if (data.error.code == 2008){alert("The API key has been disabled")
+    } 
     
 }
 
