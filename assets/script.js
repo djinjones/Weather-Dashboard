@@ -4,7 +4,7 @@ const clearSearchBtn = document.querySelector('#clearSearchBtn');
 const cityList = document.querySelector('#cityList');
 const weatherBoard = document.querySelector('#weatherBoard');
 const APIkey = '31491d9ec3484031a3a213935240304';
-const baseUrl = 'http://api.weatherapi.com/v1/'
+const baseUrl = 'https://api.weatherapi.com/v1/'
 const clearSearchModalBtn = $('#clearSearchModalBtn');
 
 console.log(`getting weather data from weatherapi.com ${baseUrl}`)
